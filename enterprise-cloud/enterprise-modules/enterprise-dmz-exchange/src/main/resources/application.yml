@@ -1,0 +1,33 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: enterprise-dmz-exchange
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+exchange:
+  security:
+    # Supply the secret with an environment variable or a managed secret store in production.
+    signature-secret: ${EXCHANGE_SIGNATURE_SECRET:change-me}
+    jwt-secret: ${EXCHANGE_JWT_SECRET:change-me}
+    jwt-expire-seconds: ${EXCHANGE_JWT_EXPIRE_SECONDS:3600}
+    timestamp-expire-seconds: ${EXCHANGE_TIMESTAMP_EXPIRE_SECONDS:300}
+  internal:
+    base-url: ${INTERNAL_API_BASE_URL:http://localhost:8081}
+  rate-limit:
+    enabled: ${EXCHANGE_RATE_LIMIT_ENABLED:true}
+    max-requests: ${EXCHANGE_RATE_LIMIT_MAX_REQUESTS:60}
+    window-seconds: ${EXCHANGE_RATE_LIMIT_WINDOW_SECONDS:60}
+logging:
+  level:
+    root: INFO

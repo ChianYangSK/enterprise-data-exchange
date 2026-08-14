@@ -1,0 +1,19 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: enterprise-cloud/enterprise-modules/enterprise-dmz-exchange
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+          cache: maven
+      - run: mvn -B test
+      - run: mvn -B package -DskipTests
+      - name: Docker build check
+        run: docker build -f ../../../docker/Dockerfile -t enterprise-data-exchange:ci ../../..

@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "code": "200",
+  "message": "Success",
+  "data": {
+    "patientId": "P10001",
+    "scheduleDate": "2026-08-13",
+    "department": "Dialysis Center",
+    "status": "SCHEDULED"
+  }
+}

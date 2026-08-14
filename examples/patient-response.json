@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "code": "200",
+  "message": "Success",
+  "data": {
+    "patientId": "P10001",
+    "name": "Z*",
+    "idCard": "110101********1234",
+    "phone": "138****8000"
+  }
+}

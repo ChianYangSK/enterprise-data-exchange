@@ -1,0 +1,20 @@
+# Build artifacts
+**/target/
+*.jar
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Local configuration and secrets
+.env
+.env.*
+!*.example
+*.log
+
+# Local data and operating-system files
+docker-data/
+data/
+*.db
+Thumbs.db
+.DS_Store
